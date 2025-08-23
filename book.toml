@@ -1,0 +1,16 @@
+[book]
+authors = ["vxpm"]
+language = "en"
+multilingual = false
+src = "src"
+title = "cubenotes"
+
+[preprocessor.alerts]
+
+[preprocessor.pagetoc]
+
+[output.html]
+additional-css = ["theme/pagetoc.css"]
+additional-js = ["theme/pagetoc.js"]
+smart-punctuation = true
+git-repository-url = "https://github.com/vxpm/psxnotes"

@@ -1,4 +1,4 @@
-# <img src="images/gc.png" width="35em" style="vertical-align:middle;"> cubenotes
+# <img src="images/gc.png" width="35px" style="display: inline; vertical-align: middle;"> cubenotes
 
 This book is a collection of notes about the Nintendo GameCube, geared towards emulator development.
 
@@ -10,4 +10,4 @@ This book is a collection of notes about the Nintendo GameCube, geared towards e
 > GameCube emulator. If my understanding is wrong, sorry!
 >
 > If you find something wrong or missing, please [open an issue](https://github.com/vxpm/cubenotes/issues/new)
-> or create a pull request.
+> or create a pull request. Help cubenotes become better!

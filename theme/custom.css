@@ -1,0 +1,18 @@
+p {
+    text-align: justify;
+}
+
+.caption {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 0.85em;
+}
+
+img {
+    display: block;
+    margin: auto;
+}
+
+hr {
+    margin-top: 15px;
+}

@@ -9,4 +9,4 @@
 - [Subsystems](subsystems.md)
   - [Video Interface](video.md)
 
-[References](references.md)
+[Resources](resources.md)

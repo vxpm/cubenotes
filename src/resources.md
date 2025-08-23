@@ -1,9 +1,9 @@
-# References
+# Resources
 
 This page is a collection of links that might be referenced through the book or that otherwise are
 useful as additional material. No particular order.
 
-## Resources
+## Documentation
 
 ### YAGCD - Yet Another GameCube Documentation
 

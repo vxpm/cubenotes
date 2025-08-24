@@ -1,4 +1,4 @@
-# <img src="images/gc.png" width="35px" style="display: inline; vertical-align: middle;"> cubenotes
+# Introduction
 
 This book is a collection of notes about the Nintendo GameCube, geared towards emulator development.
 
@@ -11,3 +11,13 @@ This book is a collection of notes about the Nintendo GameCube, geared towards e
 >
 > If you find something wrong or missing, please [open an issue](https://github.com/vxpm/cubenotes/issues/new)
 > or create a pull request. Help cubenotes become better!
+
+## Conventions
+
+- Least significant bit is 0 (unlike PowerPC manuals where the _most significant_ bit is 0)
+- Ranges of values follow Rust's syntax, i.e. `a..b` is a range from a (inclusive) to b (exclusive)
+  and `a..=b` is a range from a (inclusive) to b (inclusive). If either `a` or `b` are missing, the
+  ranges start/end at their respective limits (i.e. start or end of valid range)
+- Addresses are physical unless stated otherwise
+- Hexadecimal values are always prefixed with `0x` and separated with an underline every 4 digits,
+  e.g. `0xDEAD_BEEF`

@@ -11,6 +11,6 @@ title = "cubenotes"
 
 [output.html]
 additional-css = ["theme/pagetoc.css", "theme/custom.css"]
-additional-js = ["theme/pagetoc.js"]
+additional-js = ["theme/pagetoc.js", "theme/custom.js"]
 smart-punctuation = true
 git-repository-url = "https://github.com/vxpm/psxnotes"

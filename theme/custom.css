@@ -2,12 +2,6 @@ p {
     text-align: justify;
 }
 
-.caption {
-    margin-top: 15px;
-    text-align: center;
-    font-size: 0.85em;
-}
-
 img {
     display: block;
     margin: auto;
@@ -15,4 +9,22 @@ img {
 
 hr {
     margin-top: 15px;
+}
+
+tbody {
+    font-family: var(--mono-font);
+    font-weight: normal;
+}
+
+.gc-logo {
+    display: inline;
+    vertical-align: middle;
+    width: 20px; 
+    margin-right: 5px;
+}
+
+.caption {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 0.85em;
 }

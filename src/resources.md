@@ -58,4 +58,6 @@ The most comprehensive GameCube/Wii emulator available.
 
 ### panda.dol
 
+Extremely simple program, probably the best first thing an emulator should try to run!
+
 <https://github.com/sliice-emu/test-roms/blob/main/panda/source/panda.asm>

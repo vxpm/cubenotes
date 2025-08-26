@@ -5,6 +5,42 @@ a FIFO.
 
 ## CP FIFO
 
-The command processor has a FIFO of commands in main RAM, controlled by a bunch of registers.
+The command processor has a FIFO mechanism that builds and consumes ring buffers of commands in RAM,
+controlled by a bunch of registers:
 
-TODO: Document the registers and how the FIFO works
+> [!WARNING]
+> The registers are _middle endian_. Yep, you read that right. They are 4 byte long, but divided into
+> two 2 byte parts _low_ and _high_, and these parts themselves are big endian. This means the byte
+> significance order is `[1, 0, 3, 2]` instead of the big endian `[3, 2, 1, 0]`.
+
+| Address     | Name                   | Description                                                            |
+| ----------- | ---------------------- | ---------------------------------------------------------------------- |
+| 0x0C00_0020 | CP FIFO Start          | Ring buffer's start address                                            |
+| 0x0C00_0024 | CP FIFO End            | Ring buffer's end address (exclusive)                                  |
+| 0x0C00_0028 | CP FIFO High Watermark | Ring buffer's high watermark                                           |
+| 0x0C00_002C | CP FIFO Low Watermark  | Ring buffer's low watermark                                            |
+| 0x0C00_0030 | CP FIFO Count          | Ring buffer's current count (distance between read and write pointers) |
+| 0x0C00_0034 | CP FIFO Write Pointer  | Ring buffer's write pointer                                            |
+| 0x0C00_0038 | CP FIFO Read Pointer   | Ring buffer's read pointer                                             |
+
+The mechanism has two modes of operations: linked and multi-buffer. The mode is controlled by bit
+4 of the CP Enable register.
+
+### Linked Mode
+
+In this mode, the CP FIFO is linked to the PI FIFO. Whenever a value is written to the PI ring buffer,
+the value is also written to the ring buffer pointed to by the CP write pointer.
+
+This mode also contains "watermark" logic (whatever that means). If the CP count is smaller than the
+low watermark, then a CP FIFO underflow interrupt is generated. If the CP count is greater than the
+high watermark, then a a CP FIFO overflow interrupt is generated. Whenever one of these interrupts
+is active the CP stops processing new commands.
+
+Watermark essentially allows the CP to signal to the system whether it's close to filling up or
+close to running out of commands.
+
+### Multi-buffer Mode
+
+TODO: Rewrite and expand - this is copy pasted from Dolwin docs
+
+In multi-buffer mode, the CP processes FIFO until the FIFO size (FIFO_COUNT) is greater than 0. FIFO_COUNT is the distance between CP Wrptr and CP Rdptr.

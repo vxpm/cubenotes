@@ -1,6 +1,7 @@
 # Introduction
 
 This book is a collection of notes about the Nintendo GameCube, geared towards emulator development.
+Currently, it is not sufficient on it's own - please see [the resources page](resources.md) for more.
 
 > [!NOTE]
 > While information in this book is supposed to be correct, it might just not be! Documentation on
@@ -21,3 +22,5 @@ This book is a collection of notes about the Nintendo GameCube, geared towards e
 - Addresses are physical unless stated otherwise
 - Hexadecimal values are always prefixed with `0x` and separated with an underline every 4 digits,
   e.g. `0xDEAD_BEEF`
+- Likewise, binary values are always prefixed with `0b` and separated with an underline every 4
+  digits, e.g. `0b1111_0000_1010_0011`

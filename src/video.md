@@ -1,4 +1,4 @@
-# Video Interface
+# Video Interface (VI)
 
 The video interface is responsible for outputing a video signal to a display from a framebuffer in
 main RAM, named the eXternal FrameBuffer (XFB).

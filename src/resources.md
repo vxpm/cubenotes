@@ -23,9 +23,15 @@ Manual for the commercial variant of the GameCube's CPU.
 
 ### GameCube Architecture - A pratical analysis
 
-An overview of the GameCube's architecture. A great starting point for knowing the system.
+An overview of the GameCube's architecture. A great starting point for getting to know the system.
 
 <https://www.copetti.org/writings/consoles/gamecube/>
+
+### Dolwin Docs
+
+Collection of docs shared by the developers of the Dolwin emulator.
+
+<https://github.com/ogamespec/dolwin-docs/tree/master>
 
 ### Dolphin Emulator
 
@@ -34,17 +40,13 @@ The most comprehensive GameCube/Wii emulator available.
 - Blog: <https://dolphin-emu.org/blog/>
 - Source Code: <https://github.com/dolphin-emu/dolphin>
 
-### Nintendo GameCube device tree - Linux Kernel Docs
-
-<https://www.kernel.org/doc/Documentation/devicetree/bindings/powerpc/nintendo/gamecube.txt>
-
-### Dolwin Docs
-
-<https://github.com/ogamespec/dolwin-docs/tree/master>
-
 ### DenSinH's GameCube Resources
 
 <https://github.com/DenSinH/GameCubeResources>
+
+### Nintendo GameCube device tree - Linux Kernel Docs
+
+<https://www.kernel.org/doc/Documentation/devicetree/bindings/powerpc/nintendo/gamecube.txt>
 
 ## Tests, Examples and Demos
 

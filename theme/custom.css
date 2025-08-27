@@ -29,6 +29,11 @@ tbody {
     font-size: 0.85em;
 }
 
+.mdbook-alerts {
+    backdrop-filter: brightness(80%);
+    border-radius: 10px;
+}
+
 .frame {
     margin-block-start: 1.5em;
     margin-block-end: 1.5em;

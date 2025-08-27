@@ -6,7 +6,7 @@ The processor interface is responsible for connecting the CPU to the Flipper.
 
 The PI receives interrupt requests from Flipper and passes them along to the CPU.
 
-## PI FIFO
+## FIFO
 
 Within the PI exists a FIFO mechanism that catches burst writes[^wgp] to `0x0C00_8000` and writes
 them to a ring buffer in memory. It's controlled by three registers:

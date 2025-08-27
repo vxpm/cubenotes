@@ -24,3 +24,5 @@ Currently, it is not sufficient on it's own - please see [the resources page](re
   e.g. `0xDEAD_BEEF`
 - Likewise, binary values are always prefixed with `0b` and separated with an underline every 4
   digits, e.g. `0b1111_0000_1010_0011`
+- Every MMIO register is both readable and writable unless stated otherwise
+- Every bit flag is 0 for `false` and 1 for `true` unless stated otherwise

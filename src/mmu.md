@@ -48,9 +48,19 @@ block length.
 
 ## Segmentation and Page Tables
 
-The segmentation mechanism works by splitting the logical address space into 16 chunks of 256 MiB.
-Each segment is associated with a register which controls how to map a logical address in it to a
-52-bit virtual address.
+The segmentation mechanism works by splitting the logical address space into 16 contiguous
+segments of 256 MiB. These segments are then subdivided into 4 KiB pages. Each segment is associated
+with a segment descriptor register which controls how to map a logical address in it to a virtual
+address, which is 52 bit.
+
+The most significant 40 bits of a virtual address are what's called a virtual page number. This value
+is used to search for a corresponding entry in the page table, which will then map it to a physical
+page number, which is 20 bit. Replacing the virtual page number with the physical page number yields
+the physical address and the result of the translation.
+
+### Page Table
+
+The page table is hash table of entry groups, each containing 8 entries.
 
 ## The translation pipeline
 

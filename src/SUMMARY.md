@@ -5,6 +5,7 @@
 - [Overview](overview.md)
 - [Hardware](hardware.md)
   - [CPU](cpu.md)
+    - [MMU](mmu.md)
 - [Memory Map](memory-map.md)
 - [Subsystems](subsystems.md)
   - [Command Processor (CP)](command-processor.md)

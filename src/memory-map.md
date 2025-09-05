@@ -20,4 +20,16 @@ The GameCube's physical memory map is as follows:
 | 0xFFF0_0000..            | 1 MiB  | IPL (First MiB) |
 
 Real addressing mode is, however, very uncommon. Most games use memory address translation in order
-to map a virtual address to a physical one.
+to map a logical address to a physical one.
+
+## Reserved RAM regions
+
+In the PowerPC architecture, some predefined regions of RAM are reserved for specific usages:
+
+| Address Range            | Size     | Purpose                 |
+| ------------------------ | -------- | ----------------------- |
+| 0x0000_0000..0x0000_0100 | 256 B    | Reserved for the OS     |
+| 0x0000_0100..0x0000_1000 | 3.75 KiB | Exception Vectors       |
+| 0x0000_1000..0x0000_3000 | 8 KiB    | Implementation Specific |
+
+Dolphin OS uses the implementation specific region as an extension to the exception vectors region.

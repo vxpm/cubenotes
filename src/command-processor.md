@@ -5,8 +5,9 @@ a FIFO.
 
 ## Registers
 
-> [!NOTE]
-> The FIFO registers are described in the FIFO section next.
+```admonish
+The FIFO registers are described in the FIFO section next.
+```
 
 ### CP Status (`0x0C00_0000`, 2 bytes)
 

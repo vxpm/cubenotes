@@ -19,10 +19,10 @@ jobs:
         uses: taiki-e/install-action@v2
         with:
           tool: mdbook
-      - name: Install mdbook-alerts
+      - name: Install mdbook-admonish
         uses: taiki-e/install-action@v2
         with:
-          tool: mdbook-alerts
+          tool: mdbook-admonish
       - name: Install mdbook-pagetoc
         uses: taiki-e/install-action@v2
         with:

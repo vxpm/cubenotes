@@ -29,9 +29,11 @@ tbody {
     font-size: 0.85em;
 }
 
-.mdbook-alerts {
-    backdrop-filter: brightness(80%);
-    border-radius: 5px;
+.admonition:not(#_) {
+    background-color: var(--bg);
+    background-image: linear-gradient(rgb(0 0 0/20%) 0 0);
+    border-radius: 0.5rem;
+    overflow: hidden;
 }
 
 .frame {
@@ -40,7 +42,7 @@ tbody {
 
     padding: 15px;
 
-    backdrop-filter: brightness(80%);
+    background-image: linear-gradient(rgb(0 0 0/20%) 0 0);
     border-radius: 10px;
 }
 

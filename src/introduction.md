@@ -3,13 +3,14 @@
 This book is a collection of notes about the Nintendo GameCube, geared towards emulator development.
 Currently, it is not sufficient on it's own - please see [the resources page](resources.md) for more.
 
-> [!NOTE]
-> While information in this book is supposed to be correct, it might just not be! Documentation on
-> the gamecube is scarce and it's not uncommon for it to be wrong.
->
-> These notes are mostly just me trying to share what I've learned and found while developing my own
-> GameCube emulator. If something is wrong (or missing), sorry! Consider [opening an issue](https://github.com/vxpm/cubenotes/issues/new)
-> or creating a pull request in that case. Help cubenotes become better!
+```admonish
+While information in this book is supposed to be correct, it might just not be! Documentation on
+the gamecube is scarce and it's not uncommon for it to be wrong.
+
+These notes are mostly just me trying to share what I've learned and found while developing my own
+GameCube emulator. If something is wrong (or missing), sorry! Consider [opening an issue](https://github.com/vxpm/cubenotes/issues/new)
+or creating a pull request in that case. Help cubenotes become better!
+```
 
 ## General Conventions
 

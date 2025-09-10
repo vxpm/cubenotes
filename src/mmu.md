@@ -7,14 +7,16 @@ classic segmentation mechanism with page tables.
 Most games do not use page tables and, instead, just use the default BAT configuration provided by
 the Dolphin OS.
 
-> [!NOTE]
-> PowerPC manuals refer to an untranslated address as an _effective address_, which cubenotes instead
-> calls a _logical address_.
+```admonish
+PowerPC manuals refer to an untranslated address as an _effective address_, which cubenotes instead
+calls a _logical address_.
+```
 
-> [!WARNING]
-> BATs and page tables/segmentation are **not** exclusive and, therefore, used together.
-> Translation using BATs has precedence over translation using page tables, and if both fail then
-> an exception occurs.
+```admonish warning
+BATs and page tables/segmentation are **not** exclusive and, therefore, used together.
+Translation using BATs has precedence over translation using page tables, and if both fail then
+an exception occurs.
+```
 
 ## Block Address Translation (BAT)
 
@@ -44,8 +46,9 @@ block length.
 
 </div>
 
-> [!WARNING]
-> Active BAT blocks should not overlap. If they do, the behaviour is unspecified.
+```admonish warning
+Active BAT blocks should not overlap. If they do, the behaviour is unspecified.
+```
 
 ## Segmentation and Page Tables
 

@@ -20,9 +20,10 @@ buffer has 32 bytes of data or more, the write gather pipe will actually transfe
 memory (in chunks of 32 bytes). The destination is the same address - the write gather pipe acts
 as a proxy between the CPU and the external memory.
 
-> [!NOTE]
-> The write gather pipe packs writes - it does not insert any sort of padding in order to "align"
-> values in the internal buffer
+```admonish
+The write gather pipe packs writes - it does not insert any sort of padding in order to "align"
+values in the internal buffer
+```
 
 In the GameCube, it is always pointed at the address of the PI FIFO (`0x0C00_8000`) and is used to
 build display lists.

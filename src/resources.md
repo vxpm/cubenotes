@@ -15,10 +15,11 @@ Documentation on all aspects of the GameCube.
 
 Manual for the commercial variant of the GameCube's CPU.
 
-> [!NOTE]
-> GameCube's CPU, the PowerPC Gekko, has it's own manual. It is, however, marked as "confidential".
-> That doesn't make it any harder to find with a simple google search - it's confidentiality is up
-> to debate.
+```admonish
+GameCube's CPU, the PowerPC Gekko, has it's own manual. It is, however, marked as "confidential".
+That doesn't make it any harder to find with a simple google search - it's confidentiality is up
+to debate.
+```
 
 <https://fail0verflow.com/media/files/ppc_750cl.pdf>
 

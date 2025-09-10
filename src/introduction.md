@@ -8,12 +8,10 @@ Currently, it is not sufficient on it's own - please see [the resources page](re
 > the gamecube is scarce and it's not uncommon for it to be wrong.
 >
 > These notes are mostly just me trying to share what I've learned and found while developing my own
-> GameCube emulator. If my understanding is wrong, sorry!
->
-> If you find something wrong or missing, please [open an issue](https://github.com/vxpm/cubenotes/issues/new)
-> or create a pull request. Help cubenotes become better!
+> GameCube emulator. If something is wrong (or missing), sorry! Consider [opening an issue](https://github.com/vxpm/cubenotes/issues/new)
+> or creating a pull request in that case. Help cubenotes become better!
 
-## Conventions
+## General Conventions
 
 - Least significant bit is 0 (unlike PowerPC manuals where the _most significant_ bit is 0)
 - Ranges of values follow Rust's syntax, i.e. `a..b` is a range from a (inclusive) to b (exclusive)
@@ -26,3 +24,6 @@ Currently, it is not sufficient on it's own - please see [the resources page](re
 - Addresses are physical unless stated otherwise
 - Every MMIO register is both readable and writable unless stated otherwise
 - Every bit flag is 0 for `false` and 1 for `true` unless stated otherwise
+
+These are not all of the conventions used in cubenotes, other conventions will be listed when
+appropriate.

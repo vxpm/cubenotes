@@ -6,6 +6,7 @@
 - [Hardware](hardware.md)
   - [CPU](cpu.md)
     - [MMU](mmu.md)
+    - [Exceptions](exceptions.md)
 - [Memory Map](memory-map.md)
 - [Subsystems](subsystems.md)
   - [Command Processor (CP)](command-processor.md)

@@ -12,8 +12,9 @@ the Dolphin OS.
 > calls a _logical address_.
 
 > [!WARNING]
-> BATs and page tables/segmentation are **not** exclusive and, therefore, might be used together.
-> They might also both be disabled, in which case the Gekko is operating under real addressing mode.
+> BATs and page tables/segmentation are **not** exclusive and, therefore, used together.
+> Translation using BATs has precedence over translation using page tables, and if both fail then
+> an exception occurs.
 
 ## Block Address Translation (BAT)
 

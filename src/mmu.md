@@ -45,7 +45,7 @@ block length.
 </div>
 
 > [!WARNING]
-> BAT blocks should not overlap. If they do, the behaviour is unspecified.
+> Active BAT blocks should not overlap. If they do, the behaviour is unspecified.
 
 ## Segmentation and Page Tables
 

@@ -25,6 +25,8 @@ or creating a pull request in that case. Help cubenotes become better!
 - Addresses are physical unless stated otherwise
 - Every MMIO register is both readable and writable unless stated otherwise
 - Every bit flag is 0 for `false` and 1 for `true` unless stated otherwise
+- Descriptions prefixed with `[W]` are only valid for writes while those prefixed with `[R]` are
+  only valid for reads
 
 These are not all of the conventions used in cubenotes, other conventions will be listed when
 appropriate.

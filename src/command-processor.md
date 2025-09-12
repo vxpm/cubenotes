@@ -45,10 +45,9 @@ The FIFO registers are described in the FIFO section next.
 The command processor has a FIFO mechanism that builds and consumes ring buffers of commands in RAM,
 controlled by a bunch of registers:
 
-> [!WARNING]
-> The registers are _middle endian_. Yep, you read that right. They are 4 byte long, but divided into
-> two 2 byte parts _low_ and _high_, and these parts themselves are big endian. This means the byte
-> significance order is `[1, 0, 3, 2]` instead of the big endian `[3, 2, 1, 0]`.
+```admonish warning
+All these registers are [middle endian](memory-map.md#middle-endian).
+```
 
 | Address     | Name                   | Description                                                            |
 | ----------- | ---------------------- | ---------------------------------------------------------------------- |

@@ -33,3 +33,12 @@ In the PowerPC architecture, some predefined regions of RAM are reserved for spe
 | 0x0000_1000..0x0000_3000 | 8 KiB    | Implementation Specific |
 
 Dolphin OS uses the implementation specific region as an extension to the exception vectors region.
+
+## Middle Endian
+
+Some memory mapped registers are _middle endian_. Yep, you read that right. They are 4 byte long,
+but divided into two 2 byte consecutive parts _low_ and _high_ (in that order), and these parts
+themselves are big endian.
+
+In practice, this means the byte significance order is `[1, 0, 3, 2]` instead of the expected big
+endian `[3, 2, 1, 0]`.

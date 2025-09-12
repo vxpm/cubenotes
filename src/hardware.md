@@ -21,13 +21,13 @@
 
 ## GPU: ATI Flipper
 
-- Runs at 162 Mhz
+- Runs at 162 Mhz (CPU / 3)
 - While most of it is a GPU, it is actually a complex IC with multiple services embedded into it,
   such as a DSP, I/O controller and more
 
 ## Memory: 43 MiB total
 
-- RAM: 24 MiB (2 x 12 MiB) 1T-SRAM[^1tsram] running at 324 MHz
+- RAM: 24 MiB (2 x 12 MiB) 1T-SRAM[^1tsram] running at 324 MHz (CPU / 1.5) (Flipper \* 2)
 - VRAM: 3 MiB 1T-SRAM[^1tsram] memory embedded within Flipper, 2 MiB for framebuffers and 1 MiB
   for textures
 - ARAM: 16 MiB DRAM connected to Flipper, used as Auxiliary RAM, usually for audio
@@ -39,6 +39,13 @@
 ## Audio: Macronix DSP
 
 - Integrated within Flipper
+- 16 bit processor
+- Runs at 81 Mhz (CPU / 6)
+- Memory: Addressed by words instead of bytes. Harvard architecture.
+  - Instruction RAM: 8 KiB (4096 words)
+  - Instruction ROM: 8 KiB (4096 words)
+  - Data RAM: 8 KiB (4096 words)
+  - Data ROM: 4 KiB (2048 words)
 
 ## DVD Reader
 

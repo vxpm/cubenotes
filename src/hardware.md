@@ -21,7 +21,7 @@
 
 Here's an overview of the GameCube's motherboard, with the some important components labeled:
 
-<img src="/images/gc-motherboard.png" width="80%">
+<img src="images/gc-motherboard.png" width="80%">
 <div class="caption">
 Image by Rodrigo Copetti, 
 <a href="resources.html#gamecube-architecture---a-pratical-analysis">Gamecube Architecture - A Pratical Analysis</a>
@@ -29,7 +29,7 @@ Image by Rodrigo Copetti,
 
 And here's a diagram of the architecture:
 
-<img src="/images/arch-diagram.png" width=100%>
+<img src="images/arch-diagram.png" width=100%>
 <div class="caption">
 Image by Rodrigo Copetti, 
 <a href="resources.html#gamecube-architecture---a-pratical-analysis">Gamecube Architecture - A Pratical Analysis</a>

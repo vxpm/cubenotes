@@ -12,9 +12,9 @@ often interacts with mailboxes as if they were split into two 2 byte parts (high
 
 #### DSP Mailbox (`0x0C00_5000`, 4 bytes)
 
-This mailbox is used to send data from the CPU to the DSP. High part is always written first, which
-probably means a transfer only starts when the both parts are written to (otherwise the DSP could read
-partial data).
+Mailbox used to send data from the CPU to the DSP. High part is always written first, which probably
+means a transfer only starts when both parts are written to (otherwise the DSP could read partial
+data).
 
 | Bits  | Name   | Description                         |
 | ----- | ------ | ----------------------------------- |
@@ -27,7 +27,7 @@ The status bit is set automatically on write.
 
 #### CPU Mailbox (`0x0C00_5004`, 4 bytes)
 
-This mailbox is used to receive data from the DSP.
+Mailbox used to receive data from the DSP.
 
 | Bits  | Name   | Description                               |
 | ----- | ------ | ----------------------------------------- |
@@ -40,7 +40,7 @@ The status bit is cleared automatically on read.
 
 ### DSP Control (`0x0C00_500A`, 2 bytes)
 
-This register controls the DSP and also contains some ARAM and AI related bits.
+Controls the DSP and also contains some ARAM and AI related bits.
 
 | Bits | Name                  | Description                              |
 | ---- | --------------------- | ---------------------------------------- |
@@ -63,3 +63,28 @@ This register controls the DSP and also contains some ARAM and AI related bits.
 | 11   |                       | Also seems to be used as a reset bit     |
 
 The ARAM interrupt is raised whenever the ARAM DMA completes.
+
+### ARAM Size (`0x0C00_5012`, 2 bytes)
+
+### ARAM Mode (`0x0C00_5016`, 2 bytes)
+
+### ARAM Refresh (`0x0C00_501A`, 2 bytes)
+
+### ARAM DMA RAM Address (`0x0C00_5020`, 4 bytes)
+
+Contains the physical address of the DMA transfer in main RAM.
+
+### ARAM DMA ARAM Address (`0x0C00_5024`, 4 bytes)
+
+Contains the address of the DMA transfer in ARAM.
+
+### ARAM DMA Control (`0x0C00_5028`, 2 bytes)
+
+Controls the ARAM DMA.
+
+| Bits  | Name      | Description                                  |
+| ----- | --------- | -------------------------------------------- |
+| 0..15 | Length    | Length of the transfer in words              |
+| 15    | Direction | Whether to read from ARAM instead of writing |
+
+Writing to this register triggers a DMA transfer if the length field is non-zero.

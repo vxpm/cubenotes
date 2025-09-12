@@ -12,6 +12,7 @@ command = "mdbook-admonish"
 assets_version = "3.1.0"
 
 [output.html]
+site-url = "/cubenotes/"
 additional-css = ["theme/pagetoc.css", "theme/custom.css", "theme/admonish.css"]
 additional-js = ["theme/pagetoc.js", "theme/custom.js"]
 smart-punctuation = true

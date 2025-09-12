@@ -1,30 +1,5 @@
 # Hardware
 
-## CPU: IBM PowerPC Gekko
-
-- Runs at 486 Mhz
-- 32-bit
-- 64-bit Floating Point Unit
-- 32 KiB L1 Instruction Cache
-- 32 KiB L1 Data Cache[^dcache]
-- 256 KiB L2 Unified Cache
-- Single core
-- Pipelined (instructions are divided into multiple stages of execution, allowing multiple
-  instructions to be at different stages at the same time)
-- Superscalar (contains multiple execution units which can work on independent instructions at
-  the same time)
-- Contains a SIMD extension geared torwards 3D graphics called "Paired Singles"
-
-[^dcache]:
-    The data cache can be split into two 16 KiB sections and one of them can be mapped into
-    memory to be used as a "scratchpad" (super fast RAM).
-
-## GPU: ATI Flipper
-
-- Runs at 162 Mhz (CPU / 3)
-- While most of it is a GPU, it is actually a complex IC with multiple services embedded into it,
-  such as a DSP, I/O controller and more
-
 ## Memory: 43 MiB total
 
 - RAM: 24 MiB (2 x 12 MiB) 1T-SRAM[^1tsram] running at 324 MHz (CPU / 1.5) (Flipper \* 2)
@@ -36,17 +11,6 @@
     A kind of pseudo-static RAM (PSRAM). Internally it's just DRAM, but it's made to behave
     like SRAM from an outside point of view.
 
-## Audio: Macronix DSP
-
-- Integrated within Flipper
-- 16 bit processor
-- Runs at 81 Mhz (CPU / 6)
-- Memory: Addressed by words instead of bytes. Harvard architecture.
-  - Instruction RAM: 8 KiB (4096 words)
-  - Instruction ROM: 8 KiB (4096 words)
-  - Data RAM: 8 KiB (4096 words)
-  - Data ROM: 4 KiB (2048 words)
-
 ## DVD Reader
 
 - Reads miniDVD sized Nintendo optical discs
@@ -57,7 +21,7 @@
 
 Here's an overview of the GameCube's motherboard, with the some important components labeled:
 
-<img src="images/gc-motherboard.png" width="80%">
+<img src="/images/gc-motherboard.png" width="80%">
 <div class="caption">
 Image by Rodrigo Copetti, 
 <a href="resources.html#gamecube-architecture---a-pratical-analysis">Gamecube Architecture - A Pratical Analysis</a>
@@ -65,7 +29,7 @@ Image by Rodrigo Copetti,
 
 And here's a diagram of the architecture:
 
-<img src="images/arch-diagram.png" width=100%>
+<img src="/images/arch-diagram.png" width=100%>
 <div class="caption">
 Image by Rodrigo Copetti, 
 <a href="resources.html#gamecube-architecture---a-pratical-analysis">Gamecube Architecture - A Pratical Analysis</a>

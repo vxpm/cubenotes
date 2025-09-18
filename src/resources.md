@@ -57,6 +57,14 @@ The most comprehensive GameCube/Wii emulator available.
 
 <https://www.kernel.org/doc/Documentation/devicetree/bindings/powerpc/nintendo/gamecube.txt>
 
+### PowerPC ABI supplement to System V ABI
+
+<http://math-atlas.sourceforge.net/devel/assembly/elfspec_ppc.pdf>
+
+### Developing PowerPC Embedded Application Binary Interface (EABI) Compliant Programs
+
+<http://class.ece.iastate.edu/arun/Cpre381_Sp06/lab/labw12a/eabi_app.pdf>
+
 ## Tests, Examples and Demos
 
 ### Dolphin's Hardware Test Suite

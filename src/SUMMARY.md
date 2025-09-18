@@ -22,5 +22,7 @@
   - [Serial Interface (SI)]()
   - [External Interface (EXI)]()
   - [Audio Interface (AI)]()
+- [Software]()
+  - [ABI](software/abi.md)
 
 [Resources](resources.md)

@@ -3,133 +3,111 @@
 The video interface is responsible for outputing a video signal to a display from a framebuffer in
 main RAM, named the eXternal FrameBuffer (XFB).
 
-While the video signal outputs a specific resolution depending on it's mode, the XFB can have
-multiple dimensions. In order to work around this issue, the VI will resample the XFB to fit the
-actual display resolution.
-
-## Analog Video
-
-VI mostly deals with analog video signals, which are a bit complicated. Here's an attempt to give
-a high level overview on the topic.
-
-```admonish
-For more information, consult the [analog video resources](../resources.md#analog-video).
-```
-
-Analog video works by scanning an image through a screen from left to right, top to bottom. In order
-to produce the correct image, the scanning beam must change it's "color" according to it's position,
-which is done by timing parts of the scanning process.
-
-The scanning beam is controlled by an analog video signal, which can be thought of as being composed
-of three component signals:
-
-- **Color** signal, which contains the actual color information (called _samples_)
-- **Horizontal synchronization (HSync)** signal, which tells the screen to take the scanning beam back
-  to the start of the next scan line
-- **Vertical synchronization (VSync)** signal, which tells the screen to take the scanning beam back to
-  the top of the screen so it can start scanning out a new image
-
-There's two ways to scan an image out: _progressive_ and _interlaced_. First, we'll take a look at
-progressive video, since it's simpler to understand and works as a base for interlaced.
-
-### Progressive Video
-
-In progressive video, the whole image is scanned out at once. The video signal starts scanning out a
-line of samples (i.e. a row of image data), which goes roughly like this:
-
-```
-                              │────── H. Back Porch ──────│
-
-  │───── H. Front Porch ──────│
-
-  │───────────────── Horizontal Blank ────────────────────│
-
-Color:
-1                                   ╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷       ╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷
-0 ──────────────────────────────────┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴───────┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴
-                                      Color Burst                 Active Video
-HSync:
-1         ┌───────────────────┐
-0 ────────┘                   └───────────────────────────────────────────────────────
-
-VSync:
-1
-0 ────────────────────────────────────────────────────────────────────────────────────
-```
-
-This diagram represents what the video signal is emitting and what section these parts belong to.
-Note that this diagram is cyclic (i.e. it repeats once it reaches the end).
-
-The signal starts out by emitting a HSync pulse, telling the screen to move the beam to the start of
-the next line. Then, there's a burst of color information (the _color burst_), used to "calibrate"
-the color level of the screen. Finally, the actual color information is sent (_active video_).
-
-The process can be split into three sections:
-
-- Front Porch: Period between end of active video and the end of HSync pulse.
-- Back Porch: Period between end of HSync pulse and start of active video. This section exists to
-  give time for the beam to move back to the start of the line.
-- Horizontal Blank: This is any period outside of the active video signal.
-
-This process repeats for each scan line until the last one, where things go a little differently:
-there's no next line to scan out - the beam needs to go back to the top, where the scanning process
-can restart. This is when VSync comes into play:
-
-```
-       │──────────────────────── Vertical Blank ──────────────────────────│
-
-Color:
-1 ╷╷╷╷╷╷                                                             ╷╷╷  ╷╷╷╷╷╷
-0 ┴┴┴┴┴┴─────────────────────────────────────────────────────────────┴┴┴──┴┴┴┴┴┴──────
-    AV                                                                B     AV
-
-HSync:
-1         ┌───────┐               ┌───────┐               ┌───────┐               ┌───
-0 ────────┘       └───────────────┘       └───────────────┘       └───────────────┘
-
-VSync:
-1         ┌───────────────────────────────────────────────────────┐
-0 ────────┘                                                       └───────────────────
-```
-
-Similarly to the first diagram, this diagram represents what the video signal is emitting when it
-reaches the end of a scan.
-
-The signal emits a VSync pulse, telling the screen to move the beam back to the top of the screen.
-The VSync lasts for a few scan lines, where nothing is actually scanned out.
-
-The Vertical Blank is the period between the end of the last visible line in a scan and the start of
-first visible line in the next scan.
-
-If we zoom out and take a look at a whole scan, it would look something like this:
-
-```
-Color:
-1 ╷╷╷╷╷╷╷╷        ╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷╷
-0 ┴┴┴┴┴┴┴┴────────┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴
-
-HSync:
-1 ╷  ╷  ╷  ╷  ╷  ╷  ╷  ╷  ╷  ╷  ╷  ╷  ╷  ╷  ╷  ╷  ╷  ╷  ╷  ╷  ╷  ╷  ╷  ╷  ╷  ╷  ╷  ╷
-0 ┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──
-
-VSync:
-1         ┌───────┐
-0 ────────┘       └───────────────────────────────────────────────────────────────────
-```
-
-### Interlaced Video
-
-Interlaced video is like progressive video, except it splits the scan (i.e. the image) into two parts
-with alternating scan lines, called _fields_.
-
-The odd field scans out odd lines, while the even field scans out even lines. Together, these fields
-make up a whole scan.
+For a high level overview on the topic of analog video, take a look at the [analog video](vi/analog-video.md)
+page.
 
 ## Registers
 
+```admonish
+Lengths are in samples unless stated otherwise.
+```
+
 ### VI Vertical Timing (`0x0C00_2000`, 2 bytes)
+
+This register configures the vertical timing properties of the video signal.
 
 | Bits  | Name                      | Description                                      |
 | ----- | ------------------------- | ------------------------------------------------ |
-| 0..4  | Equalization Pulse Length | Length of the EQU pulse in half-lines            |
+| 0..4  | Equalization Pulse Length | Double the length of the EQU pulse in half-lines |
 | 4..14 | Active Video Length       | Length of the active video section in half-lines |
+
+### VI Display Config (`0x0C00_2002`, 4 bytes)
+
+| Bits  | Name                 | Description                                                      |
+| ----- | -------------------- | ---------------------------------------------------------------- |
+| 0     | Enable               | Enable video timing generation and data requests                 |
+| 1     | Reset                | Clears all requests and puts the interface into an idle state    |
+| 2     | Progressive          | Whether progressive video mode is enabled (interlaced otherwise) |
+| 3     | Stereoscopic         | Whether the 3D stereoscopic effect is enabled[^stereoscopic]     |
+| 4..6  | Display Latch 0 Mode |                                                                  |
+| 6..8  | Display Latch 1 Mode |                                                                  |
+| 8..10 | Video Format         | Current video format (0 = NTSC, 1 = Pal50, 2 = Pal60, 3 = Debug) |
+
+[^stereoscopic]: Nothing uses this.
+
+### VI Horizontal Timing 0 (`0x0C00_2004`, 4 bytes)
+
+This register configures part of the horizontal timing properties of the video signal.
+
+| Bits   | Name                            | Description                                               |
+| ------ | ------------------------------- | --------------------------------------------------------- |
+| 0..7   | Sync Length                     | Length of the HSync pulse                                 |
+| 7..17  | Sync Start to Blank End Length  | Length of interval between HSync start and HBlank end     |
+| 17..27 | Half-line to Blank Start Length | Length of interval between the half-line and HBlank start |
+
+### VI Horizontal Timing 1 (`0x0C00_2008`, 4 bytes)
+
+This register configures part of the horizontal timing properties of the video signal.
+
+| Bits   | Name                            | Description                                                  |
+| ------ | ------------------------------- | ------------------------------------------------------------ |
+| 0..9   | Half-line length                | Length of a half-line                                        |
+| 16..23 | Sync Start to Color Burst End   | Length of interval between HSync start and Color Burst end   |
+| 24..31 | Sync Start to Color Burst Start | Length of interval between HSync start and Color Burst start |
+
+### VI Odd Field Vertical Timing (`0x0C00_200C`, 4 bytes)
+
+This register configures the vertical timing properties of the video signal of the odd field.
+
+| Bits   | Name                 | Description                                      |
+| ------ | -------------------- | ------------------------------------------------ |
+| 0..10  | Pre-blanking length  | Length of the pre-blanking period, in half-lines |
+| 16..26 | Post-blanking length | Length of the pre-blanking period, in half-lines |
+
+### VI Even Field Vertical Timing (`0x0C00_2010`, 4 bytes)
+
+This register configures the vertical timing properties of the video signal of the even field.
+
+Same bits as the odd field vertical timing.
+
+### VI Top Field Base Register (`0x0C00_201C`, 4 bytes)
+
+This register configures the address of the XFB for the odd field.
+
+| Bits   | Name              | Description                                      |
+| ------ | ----------------- | ------------------------------------------------ |
+| 0..24  | Base              | Bits 0..24 of the XFB address in physical memory |
+| 24..28 | Horizontal Offset |                                                  |
+| 28     | Shift             | Whether to shift the base address right by 5     |
+
+### VI Bottom Field Base Register (`0x0C00_2024`, 4 bytes)
+
+This register configures the address of the XFB for the even field.
+
+| Bits  | Name  | Description                                      |
+| ----- | ----- | ------------------------------------------------ |
+| 9..24 | Base  | Bits 9..24 of the XFB address in physical memory |
+| 28    | Shift | Whether to shift the base address right by 5     |
+
+### VI Current Line (Vertical Counter) (`0x0C00_202C`, 2 bytes)
+
+This register contains a counter for the current line in the frame. It starts at 1 and increases
+every HSync, up to the number of lines per frame. It is reset at the start of a new frame.
+
+```admonish
+In interlaced mode, a frame is composed of the two fields.
+```
+
+### VI Current Sample (Horizontal Counter) (`0x0C00_202E`, 2 bytes)
+
+This register contains a counter for the current sample in the line. It starts at 1 and increases
+every sample, up to the number of samples per frame. It is reset at the start of a new line.
+
+### VI Display Interrupt 0 (`0x0C00_2030`, 4 bytes)
+
+This register configures the VI interrupt 0.
+
+| Bits | Name              | Description                                  |
+| ---- | ----------------- | -------------------------------------------- |
+| 0..9 | Horizontal Target | Target value for the current sample          |
+| 28   | Shift             | Whether to shift the base address right by 5 |

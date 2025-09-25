@@ -15,6 +15,7 @@
   - [Command Processor (CP)](sub/command-processor.md)
   - [Pixel Engine (PE)](sub/pixel-engine.md)
   - [Video Interface (VI)](sub/video-interface.md)
+    - [Analog Video](sub/vi/analog-video.md)
   - [Processor Interface (PI)](sub/processor-interface.md)
   - [Memory Interface (MI)]()
   - [DSP Interface (DSPI)](sub/dsp-interface.md)

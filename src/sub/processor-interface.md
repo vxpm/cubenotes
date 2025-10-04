@@ -9,9 +9,62 @@ The PI receives interrupt requests from Flipper and passes them along to the CPU
 ## FIFO
 
 Within the PI exists a FIFO mechanism that catches burst writes[^wgp] to `0x0C00_8000` and writes
-them to a ring buffer in memory. It's controlled by three registers:
+them to a ring buffer in memory. It's controlled by three registers: `FIFO Start`, `FIFO End` and
+`FIFO Current`.
 
 [^wgp]: These burst writes are executed by the [Write Gather Pipe](cpu.md#write-gather-pipe).
+
+## Registers
+
+### PI Interrupt Cause (`0x0C00_3000`, 4 bytes)
+
+Describes the cause of the last raised external interrupt. Clear on write for all bits (except maybe
+16?).
+
+```admonish warning
+The value to write in order to acknowledge an interrupt is 0 instead of the usual 1.
+```
+
+| Bits   | Name        | Description                      |
+| ------ | ----------- | -------------------------------- |
+| 0      | GP Error    | Graphics Processor runtime error |
+| 1      | Reset       | Reset switch was pressed         |
+| 2      | DVDI        | DVD interface                    |
+| 3      | SI          | Serial interface                 |
+| 4      | EXI         | External Interface               |
+| 5      | AI          | Audio Interface                  |
+| 6      | DSPI        | DSP Interface                    |
+| 7      | MEM         | Memory Interface                 |
+| 8      | VI          | Video Interface                  |
+| 9      | PE Token    | Token assertion in command list  |
+| 10     | PE Finish   | Frame ready                      |
+| 11     | CP          | Command Processor FIFO           |
+| 12     | Debug       | External Debugger                |
+| 13     | HSP         | High Speed Port                  |
+| 14..16 |             | Reserved                         |
+| 16     | Reset State | [R]                              |
+| 17..32 |             | Reserved                         |
+
+### PI Interrupt Mask (`0x0C00_3004`, 4 bytes)
+
+Masks PI interrupts, describing which ones are allowed to be raised.
+
+| Bits | Name      | Description                      |
+| ---- | --------- | -------------------------------- |
+| 0    | GP Error  | Graphics Processor runtime error |
+| 1    | Reset     | Reset switch was pressed         |
+| 2    | DVDI      | DVD interface                    |
+| 3    | SI        | Serial interface                 |
+| 4    | EXI       | External Interface               |
+| 5    | AI        | Audio Interface                  |
+| 6    | DSPI      | DSP Interface                    |
+| 7    | MEM       | Memory Interface                 |
+| 8    | VI        | Video Interface                  |
+| 9    | PE Token  | Token assertion in command list  |
+| 10   | PE Finish | Frame ready                      |
+| 11   | CP        | Command Fifo                     |
+| 12   | Debug     | External Debugger                |
+| 13   | HSP       | High Speed Port                  |
 
 ### PI FIFO Start (`0x0C00_300C`, 4 bytes)
 

@@ -65,6 +65,14 @@ The most comprehensive GameCube/Wii emulator available.
 
 <http://class.ece.iastate.edu/arun/Cpre381_Sp06/lab/labw12a/eabi_app.pdf>
 
+### Analog Video
+
+Resources on analog video signals, useful for understanding the video interface.
+
+<https://www.sciencedirect.com/topics/engineering/composite-video-signal><br>
+<https://www.analog.com/en/resources/technical-articles/basics-of-analog-video.html><br>
+<https://www.analog.com/en/resources/technical-articles/understanding-analog-video-signals.html><br>
+
 ## Tests, Examples and Demos
 
 ### Dolphin's Hardware Test Suite

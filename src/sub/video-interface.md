@@ -12,6 +12,10 @@ page.
 Lengths are in samples unless stated otherwise.
 ```
 
+```admonish warning title="Work in Progress"
+Not all registers are described here yet
+```
+
 ### VI Vertical Timing (`0x0C00_2000`, 2 bytes)
 
 This register configures the vertical timing properties of the video signal.
@@ -68,7 +72,7 @@ This register configures the vertical timing properties of the video signal of t
 
 This register configures the vertical timing properties of the video signal of the even field.
 
-Same bits as the odd field vertical timing.
+Same bits as `VI Odd Field Vertical Timing`.
 
 ### VI Top Field Base Register (`0x0C00_201C`, 4 bytes)
 
@@ -111,3 +115,21 @@ This register configures the VI interrupt 0.
 | ---- | ----------------- | -------------------------------------------- |
 | 0..9 | Horizontal Target | Target value for the current sample          |
 | 28   | Shift             | Whether to shift the base address right by 5 |
+
+### VI Display Interrupt 1 (`0x0C00_2034`, 4 bytes)
+
+This register configures the VI interrupt 1.
+
+Same bits as `VI Display Interrupt 0`.
+
+### VI Display Interrupt 2 (`0x0C00_2038`, 4 bytes)
+
+This register configures the VI interrupt 2.
+
+Same bits as `VI Display Interrupt 0`.
+
+### VI Display Interrupt 3 (`0x0C00_203C`, 4 bytes)
+
+This register configures the VI interrupt 3.
+
+Same bits as `VI Display Interrupt 0`.

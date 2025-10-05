@@ -13,6 +13,7 @@
 - [Memory Map](memory-map.md)
 - [Subsystems](subsystems.md)
   - [Command Processor (CP)](sub/command-processor.md)
+    - [FIFO](sub/cp/fifo.md)
   - [Pixel Engine (PE)](sub/pixel-engine.md)
   - [Video Interface (VI)](sub/video-interface.md)
     - [Analog Video](sub/vi/analog-video.md)

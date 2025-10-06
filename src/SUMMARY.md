@@ -15,6 +15,7 @@
   - [Command Processor (CP)](gx/command-processor.md)
     - [FIFO](gx/cp/fifo.md)
     - [Commands](gx/cp/commands.md)
+    - [Vertex Attribute Tables](gx/vat.md)
   - [Pixel Engine (PE)](gx/pixel-engine.md)
 - [Video Interface (VI)](video-interface.md)
   - [Analog Video](vi/analog-video.md)

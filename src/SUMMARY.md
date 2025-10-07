@@ -17,6 +17,7 @@
     - [Commands](gx/cp/commands.md)
     - [Vertex Attribute Tables](gx/vat.md)
   - [Pixel Engine (PE)](gx/pixel-engine.md)
+  - [Transform Unit (XE)](gx/transform-unit.md)
 - [Video Interface (VI)](video-interface.md)
   - [Analog Video](vi/analog-video.md)
 - [Processor Interface (PI)](processor-interface.md)

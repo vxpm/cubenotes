@@ -111,10 +111,16 @@ every sample, up to the number of samples per frame. It is reset at the start of
 
 This register configures the VI interrupt 0.
 
-| Bits | Name              | Description                                  |
-| ---- | ----------------- | -------------------------------------------- |
-| 0..9 | Horizontal Target | Target value for the current sample          |
-| 28   | Shift             | Whether to shift the base address right by 5 |
+| Bits   | Name              | Description                         |
+| ------ | ----------------- | ----------------------------------- |
+| 0..9   | Horizontal Target | Target value for the current sample |
+| 16..25 | Vertical Target   | Target value for the current line   |
+| 28     | Mask              | Whether this interrupt is enabled   |
+| 31     | Status            | Whether this interrupt is active    |
+
+```admonish warning
+The value to write in order to acknowledge the interrupt is 0 instead of the usual 1.
+```
 
 ### VI Display Interrupt 1 (`0x0C00_2034`, 4 bytes)
 

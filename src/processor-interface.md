@@ -18,12 +18,8 @@ them to a ring buffer in memory. It's controlled by three registers: `FIFO Start
 
 ### PI Interrupt Cause (`0x0C00_3000`, 4 bytes)
 
-Describes the cause of the last raised external interrupt. Clear on write for all bits (except maybe
-16?).
-
-```admonish warning
-The value to write in order to acknowledge an interrupt is 0 instead of the usual 1.
-```
+Contains which external interrupt causes are active. This register is read-only: in order to acknowledge
+an interrupt, you must write to the controlling status bit of the interrupt specific register.
 
 | Bits   | Name        | Description                      |
 | ------ | ----------- | -------------------------------- |
@@ -42,7 +38,7 @@ The value to write in order to acknowledge an interrupt is 0 instead of the usua
 | 12     | Debug       | External Debugger                |
 | 13     | HSP         | High Speed Port                  |
 | 14..16 |             | Reserved                         |
-| 16     | Reset State | [R]                              |
+| 16     | Reset State |                                  |
 | 17..32 |             | Reserved                         |
 
 ### PI Interrupt Mask (`0x0C00_3004`, 4 bytes)

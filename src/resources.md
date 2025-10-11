@@ -42,6 +42,12 @@ Collection of docs shared by the developers of the Dolwin emulator.
 
 <https://github.com/ogamespec/dolwin-docs/tree/master>
 
+### libogc API documentation
+
+Documentation of devkitPro's libogc
+
+<https://libogc.devkitpro.org/api_doc.html>
+
 ### Dolphin Emulator
 
 The most comprehensive GameCube/Wii emulator available.
@@ -64,6 +70,18 @@ The most comprehensive GameCube/Wii emulator available.
 ### Developing PowerPC Embedded Application Binary Interface (EABI) Compliant Programs
 
 <http://class.ece.iastate.edu/arun/Cpre381_Sp06/lab/labw12a/eabi_app.pdf>
+
+### GameCube Flipper semidocumentation
+
+Small page about working with GX.
+
+<http://www.amnoid.de/gc/tev.html>
+
+### Making a Wii game in 2024
+
+Mostly talks about working with GX.
+
+<https://blog.allpurposem.at/making-a-wii-game-in-2024>
 
 ### Analog Video
 
